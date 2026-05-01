@@ -131,11 +131,11 @@ Mobile-first design:
 - Hamburger menu (JS toggle)
 
 ### Navbar Items
-- Features (dropdown)
 - Pricing
-- FAQ
+- Industries
+- Partner
 - Blog
-- Login (CTA → external dashboard)
+- Get A Demo (CTA → Contact Page)
 
 ---
 
