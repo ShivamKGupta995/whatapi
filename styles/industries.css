@@ -1,0 +1,471 @@
+/* ============================================================
+   WHATAPI – Industries Page Stylesheet
+   ============================================================ */
+
+/* ── Industries Hero ────────────────────────────────────────── */
+.ind-hero {
+  background: linear-gradient(135deg, #f0fdf8 0%, #e6faf3 60%, #d1fae5 100%);
+  padding: 80px 0 0;
+  overflow: hidden;
+}
+
+.ind-hero .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 60px;
+}
+
+.ind-hero-content { padding-bottom: 80px; }
+
+.ind-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(37,211,102,.12);
+  color: var(--color-accent);
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.ind-hero-badge .dot {
+  width: 7px;
+  height: 7px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  animation: pulse-dot 2s infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: .6; transform: scale(1.3); }
+}
+
+.ind-hero-content h1 {
+  margin-bottom: 18px;
+  color: var(--color-text);
+}
+
+.ind-hero-content h1 .highlight {
+  color: var(--color-primary);
+  position: relative;
+}
+
+.ind-hero-content p {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  max-width: 480px;
+  margin-bottom: 32px;
+}
+
+.ind-hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.ind-hero-stats {
+  display: flex;
+  gap: 32px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.ind-stat-item { text-align: left; }
+
+.ind-stat-item .stat-number {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-text);
+  letter-spacing: -.02em;
+}
+
+.ind-stat-item .stat-label {
+  font-size: .8rem;
+  color: var(--color-text-muted);
+}
+
+/* ── Hero Chat Mockup ───────────────────────────────────────── */
+.ind-hero-visual {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  position: relative;
+  padding-bottom: 0;
+}
+
+.chat-mockup {
+  background: #fff;
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 20px 60px rgba(0,0,0,.12);
+  width: 300px;
+  overflow: hidden;
+  position: relative;
+}
+
+.chat-mockup-header {
+  background: var(--color-accent);
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.chat-avatar {
+  width: 36px;
+  height: 36px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.chat-header-info .chat-name {
+  color: #fff;
+  font-size: .88rem;
+  font-weight: 600;
+}
+
+.chat-header-info .chat-status {
+  color: rgba(255,255,255,.75);
+  font-size: .72rem;
+}
+
+.chat-body {
+  background: #e5ddd5;
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 280px;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9c3bb' fill-opacity='0.15'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.chat-bubble {
+  max-width: 82%;
+  padding: 9px 12px;
+  border-radius: 10px;
+  font-size: .8rem;
+  line-height: 1.5;
+  position: relative;
+}
+
+.chat-bubble.incoming {
+  background: #fff;
+  align-self: flex-start;
+  border-top-left-radius: 2px;
+  color: #303030;
+  box-shadow: 0 1px 2px rgba(0,0,0,.1);
+}
+
+.chat-bubble.outgoing {
+  background: #dcf8c6;
+  align-self: flex-end;
+  border-top-right-radius: 2px;
+  color: #303030;
+  box-shadow: 0 1px 2px rgba(0,0,0,.1);
+}
+
+.chat-bubble .bubble-time {
+  font-size: .65rem;
+  color: #999;
+  display: block;
+  text-align: right;
+  margin-top: 4px;
+}
+
+.chat-bubble .bubble-name {
+  font-size: .68rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  margin-bottom: 3px;
+}
+
+.chat-cta-bubble {
+  background: #fff;
+  align-self: flex-start;
+  border-radius: 10px;
+  overflow: hidden;
+  max-width: 88%;
+  box-shadow: 0 1px 2px rgba(0,0,0,.1);
+}
+
+.chat-cta-bubble .bubble-content {
+  padding: 10px 12px;
+  font-size: .78rem;
+  color: #303030;
+  line-height: 1.5;
+}
+
+.chat-cta-bubble .bubble-btn {
+  border-top: 1px solid #eee;
+  padding: 9px 12px;
+  color: var(--color-primary);
+  font-size: .8rem;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* ── Trusted By ─────────────────────────────────────────────── */
+.trusted-strip {
+  background: #fff;
+  padding: 40px 0;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.trusted-strip .container {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.trusted-label {
+  font-size: .8rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  white-space: nowrap;
+}
+
+.trusted-logos {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.trusted-logo-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: .9rem;
+  font-weight: 600;
+  color: #94a3b8;
+  letter-spacing: -.01em;
+  transition: color var(--transition);
+}
+
+.trusted-logo-item:hover { color: var(--color-text-muted); }
+
+.trusted-logo-item .logo-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  background: currentColor;
+  opacity: .3;
+}
+
+/* ── Industry Cards Grid ────────────────────────────────────── */
+.industries-section {
+  background: var(--color-bg);
+  padding: 80px 0;
+}
+
+.industries-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.industry-card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.industry-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--color-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .3s ease;
+}
+
+.industry-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+  border-color: rgba(37,211,102,.3);
+}
+
+.industry-card:hover::before {
+  transform: scaleX(1);
+}
+
+.industry-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  background: rgba(37,211,102,.1);
+  flex-shrink: 0;
+}
+
+.industry-card h3 {
+  font-size: .98rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.industry-card p {
+  font-size: .82rem;
+  line-height: 1.65;
+  color: var(--color-text-muted);
+  flex: 1;
+}
+
+.btn-outline-green {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: 1.5px solid var(--color-primary);
+  border-radius: var(--radius);
+  color: var(--color-primary);
+  font-size: .8rem;
+  font-weight: 600;
+  background: transparent;
+  text-decoration: none;
+  transition: background var(--transition), color var(--transition);
+  align-self: flex-start;
+  margin-top: 4px;
+}
+
+.btn-outline-green:hover {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+/* ── Industries CTA Banner ──────────────────────────────────── */
+.ind-cta-banner {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  padding: 80px 0;
+}
+
+.ind-cta-banner .container {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 40px;
+}
+
+.ind-cta-text h2 {
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.ind-cta-text p {
+  color: rgba(255,255,255,.65);
+  font-size: 1rem;
+  max-width: 540px;
+}
+
+.ind-cta-actions {
+  display: flex;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+/* ── Ghost Light Button (for dark backgrounds) ──────────────── */
+.btn-ghost-light {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 26px;
+  border-radius: var(--radius);
+  font-size: .9rem;
+  font-weight: 500;
+  border: 1.5px solid rgba(255,255,255,.35);
+  color: rgba(255,255,255,.85);
+  background: transparent;
+  text-decoration: none;
+  transition: background var(--transition), border-color var(--transition);
+}
+.btn-ghost-light:hover {
+  background: rgba(255,255,255,.08);
+  border-color: rgba(255,255,255,.7);
+}
+
+/* ── Floating WhatsApp Button ────────────────────────────────── */
+.float-wa {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 54px;
+  height: 54px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 24px rgba(37,211,102,.45);
+  z-index: 999;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.float-wa:hover {
+  transform: scale(1.08);
+  box-shadow: 0 8px 30px rgba(37,211,102,.55);
+}
+
+/* ── Footer ─────────────────────────────────────────────────── */
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 1023px) {
+  .industries-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .ind-hero .container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .ind-hero-content { padding-bottom: 0; }
+  .ind-hero-visual { justify-content: center; padding-bottom: 0; }
+  .chat-mockup { width: 280px; }
+  .ind-hero { padding-bottom: 40px; }
+
+  .ind-cta-banner .container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .ind-cta-text p { margin-left: auto; margin-right: auto; }
+  .ind-cta-actions { justify-content: center; }
+}
+
+@media (max-width: 767px) {
+  .industries-grid { grid-template-columns: 1fr; }
+  .ind-hero-stats { gap: 20px; }
+  .ind-hero-actions { flex-direction: column; align-items: flex-start; }
+  .trusted-strip .container { gap: 24px; }
+  .trusted-logos { gap: 20px; }
+  .ind-cta-actions { flex-direction: column; align-items: center; }
+}

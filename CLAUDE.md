@@ -18,6 +18,9 @@ whatapi-website/
 - pages/
   - pricing.html
   - faq.html
+  - industries.html
+  - partner.html
+  - contact.html
   - features/
     - broadcasts.html
     - catalog.html
@@ -104,7 +107,7 @@ Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-ser
 ### Buttons
 - Rounded corners
 - Green primary CTA
-- Subtle hover states (no harsh effects)
+- Subtle hover states
 
 ### Cards
 - White background
@@ -126,16 +129,59 @@ Mobile-first design:
 
 ### Desktop
 - Horizontal navbar
+- Sticky on scroll
 
 ### Mobile
 - Hamburger menu (JS toggle)
 
-### Navbar Items
-- Pricing
-- Industries
-- Partner
-- Blog
-- Get A Demo (CTA → Contact Page)
+---
+
+## Navbar Items (With Purpose)
+
+### 1. Pricing
+- URL: /pages/pricing.html
+- Show plans + comparison table
+- CTA: Start Free Trial / Talk to Sales
+
+---
+
+### 2. Industries
+- URL: /pages/industries.html
+
+#### Sections:
+- E-commerce
+- Real Estate
+- Education
+- Agencies
+
+Each includes:
+- Problem
+- WhatsApp solution
+- CTA
+
+---
+
+### 3. Partner
+- URL: /pages/partner.html
+
+#### Content:
+- Who can partner
+- Benefits
+- Commission model
+- CTA: Become a Partner
+
+---
+
+### 4. Blog
+- URL: /blog/
+- SEO-driven content
+- Internal linking
+
+---
+
+### 5. Get A Demo (Primary CTA)
+- URL: /pages/contact.html OR external dashboard
+- Lead capture focused
 
 ---
 
@@ -143,11 +189,10 @@ Mobile-first design:
 
 1. Hero Section
    - H1: “Whatapi – WhatsApp-style API for Indian SMBs”
-   - Subheading (USP)
-   - Primary CTA
-   - Secondary CTA
+   - USP line
+   - Primary + Secondary CTA
 
-2. Feature Highlights (3–5 cards)
+2. Feature Highlights
    - Broadcast Messaging
    - WhatsApp Catalog
    - Automation
@@ -164,24 +209,29 @@ Mobile-first design:
 
 5. FAQ Preview
 
-6. Floating WhatsApp-style CTA button (bottom-right)
+6. Floating WhatsApp-style CTA button
 
 ---
 
 ## 📄 Pages
 
 ### Pricing Page
-- 3 tier pricing cards
+- 3 pricing cards
 - Feature comparison table
 
-### Feature Pages (broadcasts, catalog)
+### Feature Pages
+(broadcasts, catalog)
+
 Structure:
 - Problem
 - Solution
 - How it works
 - Benefits
 
+---
+
 ### FAQ Page
+
 Sections:
 - Pricing
 - Features
@@ -190,28 +240,49 @@ Sections:
 
 ---
 
+### Industries Page
+
+- Industry-specific use cases
+- Conversion-focused sections
+
+---
+
+### Partner Page
+
+- Partner program details
+- Benefits + onboarding
+
+---
+
+### Contact Page
+
+- Demo request form
+- Lead capture
+
+---
+
 ## 📝 Blog Guidelines
 
-- SEO-friendly structure
+- SEO-friendly
 - Use semantic HTML (h1–h3)
-- Include internal links to:
+- Internal linking:
   - Pricing
   - Features
-- Write for Indian SMB audience
+- Focus on Indian SMB problems
 
 ---
 
 ## ⚙️ Code Guidelines
 
-- Use semantic HTML5 tags
+- Use semantic HTML5
 - No inline CSS
 - Organize CSS into:
   - Layout
   - Components
   - Utilities
 
-- Keep code clean and readable
-- Avoid unnecessary complexity
+- Clean, readable code
+- Minimal JS (only for navbar/menu)
 
 ---
 
@@ -221,7 +292,7 @@ Build a **premium, fast, and scalable static website** that:
 
 - Feels like a WhatsApp-native product
 - Is easy to maintain
-- Can be deployed anywhere (Netlify, Vercel, cPanel, etc.)
+- Deploys anywhere (Netlify, Vercel, cPanel)
 - Converts visitors into leads effectively
 
 ---
