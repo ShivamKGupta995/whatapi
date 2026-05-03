@@ -23,15 +23,29 @@ whatapi-website/
 │   ├── faq.html
 │   ├── industries.html
 │   ├── partner.html
-│   └── contact.html
+│   └── contact.html      # demo request form → posts to /backend/api/contact.php
 ├── blog/
 │   ├── index.html        # blog listing (fetches posts via API)
 │   └── post.html         # single post renderer (fetches via API)
-├── backend/              # PHP blog CMS backend
-│   ├── config.php
+├── backend/              # PHP blog CMS + contact form backend
+│   ├── .env.example      # template for all env vars (copy to .env.local / .env.production)
+│   ├── config.php        # loads .env, defines DB + SMTP + admin constants
 │   ├── admin/            # dashboard, editor, login, delete, logout
-│   ├── api/              # posts, post, categories, sitemap, upload
-│   ├── includes/         # auth, db, helpers
+│   ├── api/
+│   │   ├── contact.php   # contact form handler — validates + sends email via SMTP
+│   │   ├── post.php
+│   │   ├── posts.php
+│   │   ├── categories.php
+│   │   ├── sitemap.php
+│   │   └── upload.php
+│   ├── includes/
+│   │   ├── auth.php
+│   │   ├── db.php
+│   │   ├── helpers.php   # setCors(), jsonOut(), jsonError(), clean(), uploadImage()
+│   │   └── PHPMailer/    # PHPMailer v6 core files (no Composer needed)
+│   │       ├── PHPMailer.php
+│   │       ├── SMTP.php
+│   │       └── Exception.php
 │   └── setup/install.php
 └── assets/
     └── images/
@@ -49,6 +63,7 @@ whatapi-website/
 - Flexbox + CSS Grid for layout
 - Mobile-first responsive design
 - Static and deployable on Netlify, Vercel, or cPanel
+- Backend: PHP 8+ with PDO (MySQL), PHPMailer for SMTP
 
 ---
 
@@ -222,7 +237,7 @@ These are billed by Meta separately on top of platform plans.
 ## 🏠 Homepage Structure (index.html)
 
 1. **Hero** — H1: "Whatapi – WhatsApp-style API for Indian SMBs", primary CTA + secondary CTA (both → `/pages/contact.html`)
-2. **Stats bar** — 5,000+ businesses, 98% delivery, 50M+ messages, 99.9% uptime
+2. **Stats bar** — 25+ businesses, 98% delivery, 50M+ messages, 99.9% uptime
 3. **Feature Highlights** — Broadcasts, Catalog, Automation, API Integration (SVG icons)
 4. **Use Cases** — E-commerce, Agencies, Education, Real Estate (SVG icons, links → `/pages/industries.html`)
 5. **Pricing Preview** — Free Forever banner + Starter / Growth / Enterprise cards
@@ -264,17 +279,56 @@ These are billed by Meta separately on top of platform plans.
 ### Contact Page (`pages/contact.html`)
 - Demo request / lead capture form
 - Primary destination for all site CTAs
+- **Form submission:** POSTs to `/backend/api/contact.php` (PHP SMTP via Hostinger)
+- Includes honeypot (`botcheck`) for spam protection
+- No third-party form service — self-hosted email delivery
 
 ---
 
 ## 📝 Blog
 
+### Public Pages
 - `blog/index.html` — listing page, fetches posts from PHP API
 - `blog/post.html` — single post renderer, fetches post by slug from PHP API
+
+### Post Page Layout (Medium-style)
+1. **Full-width hero image** — spans the entire viewport width, no border-radius, above all text
+2. **Breadcrumb row** — left: Home › Blog › Category; right: clickable **Published** badge → links to `editor.php?id={id}` in admin
+3. **Category pill** — coloured tag
+4. **H1 title** — large, tight letter-spacing
+5. **Excerpt** — subtitle style, 1.15rem
+6. **Author + meta bar** — avatar, name, role, date, read time, share buttons
+7. **Article body** + TOC sidebar (desktop only)
+
+The `.post-hero .container` uses `max-width: 740px` inner constraint (`#postHeroContent`) but the container itself matches `.post-body .container` width at all breakpoints so left edges align.
+
+### Backend
 - `backend/api/posts.php`, `post.php`, `categories.php` — REST endpoints
 - `backend/admin/` — protected CMS for writing/editing posts
 - SEO-friendly: semantic HTML (h1–h3), internal links to Pricing and feature pages
 - Content focus: Indian SMB WhatsApp use cases
+
+### Admin Edit Shortcut (post.html)
+When `p.id` is available (real DB post), a **"Published / Draft" badge** with a pulsing green dot appears in the breadcrumb row. Clicking it opens `/backend/admin/editor.php?id={p.id}`. Non-admins get redirected to the login page by `requireLogin()`.
+
+---
+
+## 📧 Contact Form Email (backend/api/contact.php)
+
+- Uses **PHPMailer** (3 standalone files in `backend/includes/PHPMailer/` — no Composer)
+- Sends via Hostinger SMTP: `smtp.hostinger.com:587` (STARTTLS)
+- From address must match SMTP auth user (Hostinger requirement)
+- Reply-To is set to the visitor's email so replies go directly to them
+- Honeypot field (`botcheck`) — if non-empty, silently returns success without sending
+- Required env vars (set in `.env.production` on server):
+
+```
+SMTP_HOST=smtp.hostinger.com
+SMTP_PORT=587
+SMTP_USER=support@codimai.com
+SMTP_PASS=<hostinger email password>
+CONTACT_TO=support@codimai.com
+```
 
 ---
 
@@ -300,7 +354,7 @@ Only ✓ (U+2713) and ✗ (U+2717) Unicode text symbols are acceptable in plan f
 |---|---|---|
 | Section / card icons | 26px | 1.8 |
 | Inline (buttons, nav) | 16px | 2 |
-| Blog placeholders / thumbnails | 48–64px | 1.5 |
+| Blog placeholders / thumbnails | 96px | 1.5 |
 
 ### Inline SVGs inside text (e.g., chat message mockups)
 
@@ -334,7 +388,7 @@ Feather Icons / Lucide — stroke-based, 24×24 viewBox.
 - Semantic HTML5
 - No inline CSS (use class-based CSS in stylesheets)
 - CSS organized into: Layout → Components → Utilities
-- Minimal JS: only for navbar toggle, FAQ accordion, pricing billing toggle
+- Minimal JS: only for navbar toggle, FAQ accordion, pricing billing toggle, blog fetch
 - Clean, readable code — no comments unless the WHY is non-obvious
 
 ---
@@ -353,5 +407,5 @@ Build a **premium, fast, and scalable static website** that:
 
 - Feels like a WhatsApp-native product
 - Is easy to maintain
-- Deploys anywhere (Netlify, Vercel, cPanel)
+- Deploys anywhere (Netlify, Vercel, cPanel / Hostinger)
 - Converts visitors into leads effectively

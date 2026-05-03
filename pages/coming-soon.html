@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coming Soon – Whatapi</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles/main.css" />
+  <style>
+    .coming-soon-page {
+      min-height: calc(100vh - var(--nav-h));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(160deg, #e8fdf3 0%, #f7fdfc 50%, #fff 100%);
+      padding: 60px 20px;
+    }
+    .coming-soon-card {
+      text-align: center;
+      max-width: 520px;
+    }
+    .coming-soon-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 18px;
+      background: rgba(37,211,102,.12);
+      border: 1px solid rgba(37,211,102,.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 28px;
+    }
+    .coming-soon-card h1 {
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      margin-bottom: 14px;
+    }
+    .coming-soon-card h1 span { color: var(--color-primary); }
+    .coming-soon-card > p {
+      font-size: .97rem;
+      color: var(--color-text-muted);
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+    .coming-soon-pages {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+    .coming-soon-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 18px;
+      border-radius: 20px;
+      border: 1.5px solid var(--color-border);
+      background: #fff;
+      font-size: .84rem;
+      font-weight: 500;
+      color: var(--color-text-muted);
+      box-shadow: var(--shadow);
+    }
+    .coming-soon-pill svg { flex-shrink: 0; }
+    .coming-soon-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="container">
+    <a href="../index.html" class="nav-logo">
+      <div class="logo-icon">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        </svg>
+      </div>
+      Whatapi
+    </a>
+    <nav class="nav-links">
+      <div class="nav-item"><a href="pricing.html">Pricing</a></div>
+      <div class="nav-item"><a href="industries.html">Industries</a></div>
+      <div class="nav-item"><a href="partner.html">Partner</a></div>
+      <div class="nav-item"><a href="../blog/index.html">Blog</a></div>
+    </nav>
+    <div class="nav-cta">
+      <a href="contact.html" class="btn btn-primary btn-sm">Get a Demo</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="pricing.html">Pricing</a>
+  <a href="industries.html">Industries</a>
+  <a href="partner.html">Partner</a>
+  <a href="../blog/index.html">Blog</a>
+  <div class="mobile-cta">
+    <a href="contact.html" class="btn btn-primary full-width">Get a Demo</a>
+  </div>
+</div>
+
+
+<div class="coming-soon-page">
+  <div class="coming-soon-card">
+
+    <div class="coming-soon-icon">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="12" y1="12" x2="12" y2="16"/>
+        <line x1="12" y1="10" x2="12.01" y2="10"/>
+      </svg>
+    </div>
+
+    <h1>We're working on <span>this</span></h1>
+    <p>Our legal pages are being drafted carefully. They'll be live very soon. In the meantime, feel free to reach out to us directly with any questions.</p>
+
+    <div class="coming-soon-pages">
+      <span class="coming-soon-pill">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Privacy Policy
+      </span>
+      <span class="coming-soon-pill">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Terms of Service
+      </span>
+      <span class="coming-soon-pill">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        Refund Policy
+      </span>
+      <span class="coming-soon-pill">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        Compliance
+      </span>
+    </div>
+
+    <div class="coming-soon-actions">
+      <a href="contact.html" class="btn btn-primary">Contact Us</a>
+      <a href="../index.html" class="btn btn-outline">Back to Home</a>
+    </div>
+
+  </div>
+</div>
+
+
+<script>
+  const hamburger  = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open');
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+</script>
+
+</body>
+</html>

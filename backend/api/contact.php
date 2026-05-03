@@ -26,7 +26,7 @@ $biz     = clean($_POST['business_name'] ?? '');
 $phone   = clean($_POST['phone']         ?? '');
 $email   = clean($_POST['email']         ?? '');
 $industry = clean($_POST['industry']     ?? '');
-$volume  = clean($_POST['message_volume'] ?? '');
+$role    = clean($_POST['role']           ?? '');
 $message = clean($_POST['message']       ?? '');
 
 /* ── Server-side validation ─────────────────────────────── */
@@ -47,7 +47,7 @@ $rows = [
     'WhatsApp Number'  => $phone,
     'Email'            => $email,
     'Industry'         => $industry ?: '—',
-    'Message Volume'   => $volume   ?: '—',
+    'Role'             => $role     ?: '—',
     'Message'          => $message  ? nl2br(htmlspecialchars($message)) : '—',
 ];
 
