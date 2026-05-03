@@ -8,11 +8,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg">
+
   <link rel="stylesheet" href="../styles/main.css" />
   <link rel="stylesheet" href="../styles/industries.css" />
 </head>
 <body>
 
+  
 <!-- ══════════════════════════════════════════════════════════
      NAVBAR
 ═══════════════════════════════════════════════════════════ -->
@@ -65,8 +68,8 @@
 
     <!-- Left: Copy -->
     <div class="ind-hero-content">
-      <div class="ind-hero-badge">
-        <span class="dot"></span>
+    <div class="ind-hero-visual">
+      <div class="chat-mockup">
         16+ Industry Use Cases
       </div>
 
@@ -85,23 +88,6 @@
         <a href="pricing.html" class="btn btn-ghost">View Pricing →</a>
       </div>
 
-      <div class="ind-hero-stats">
-        <div class="ind-stat-item">
-          <span class="stat-number">25+</span>
-          <span class="stat-label">Businesses Trust Us</span>
-        </div>
-        <div class="ind-stat-item">
-          <span class="stat-number">16+</span>
-          <span class="stat-label">Industries Covered</span>
-        </div>
-        <div class="ind-stat-item">
-          <span class="stat-number">98%</span>
-          <span class="stat-label">Message Open Rate</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Right: Chat Mockup -->
     <div class="ind-hero-visual">
       <div class="chat-mockup">
         <div class="chat-mockup-header">
@@ -126,6 +112,23 @@
             <div class="bubble-btn">🛒 Shop Now</div>
           </div>
           <div class="chat-bubble outgoing">
+            Thanks! Can I also book a demo?
+            <span class="bubble-time">10:34 AM ✓✓</span>
+          </div>
+          <div class="chat-bubble incoming">
+            <div class="bubble-name">Whatapi</div>
+            Absolutely! Click below to pick a slot.
+            <span class="bubble-time">10:34 AM</span>
+          </div>
+          <div class="chat-cta-bubble">
+            <div class="bubble-content">
+              📅 Schedule a free 20-min demo with our expert.
+            </div>
+            <div class="bubble-btn">Book Demo →</div>
+          </div>
+        </div>
+      </div>
+    </div>
             Thanks! Can I also book a demo?
             <span class="bubble-time">10:34 AM ✓✓</span>
           </div>
@@ -487,6 +490,17 @@
     hamburger.classList.toggle('active');
     mobileMenu.classList.toggle('open');
   });
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.industries-grid').forEach(el => revealObserver.observe(el));
 </script>
 
 </body>

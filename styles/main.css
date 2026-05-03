@@ -355,6 +355,26 @@ section { padding: 80px 0; }
   0%, 100% { opacity: 1; }
   50% { opacity: .3; }
 }
+@keyframes phoneFloat {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
+}
+@keyframes msgFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes chipEntrance {
+  from { opacity: 0; transform: translateY(14px) scale(.92); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes chipBob {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-6px); }
+}
+@keyframes heroVisualIn {
+  from { opacity: 0; transform: translateX(28px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
 
 .hero-content h1 { margin-bottom: 18px; }
 .hero-content h1 .highlight { color: var(--color-primary); }
@@ -401,23 +421,25 @@ section { padding: 80px 0; }
   position: relative;
   display: flex;
   justify-content: center;
+  animation: heroVisualIn .7s ease both;
 }
 .phone-wrap {
   position: relative;
   display: inline-block;
 }
 .phone-mockup {
-  width: 255px;
+  width: 290px;
   background: #1C1C1E;
   border-radius: 38px;
   padding: 11px;
   box-shadow: var(--shadow-lg);
+  animation: phoneFloat 5s ease-in-out infinite;
 }
 .phone-screen {
   background: #ECE5DD;
   border-radius: 28px;
   overflow: hidden;
-  min-height: 430px;
+  min-height: 460px;
 }
 .phone-topbar {
   background: #075E54;
@@ -439,6 +461,15 @@ section { padding: 80px 0; }
 .phone-info strong { display: block; color: #fff; font-size: .78rem; }
 .phone-info span { color: rgba(255,255,255,.65); font-size: .68rem; }
 .phone-msgs { padding: 10px 8px; display: flex; flex-direction: column; gap: 6px; }
+.phone-msgs > * {
+  opacity: 0;
+  animation: msgFadeIn .45s ease both;
+}
+.phone-msgs > *:nth-child(1) { animation-delay: .4s; }
+.phone-msgs > *:nth-child(2) { animation-delay: .9s; }
+.phone-msgs > *:nth-child(3) { animation-delay: 1.4s; }
+.phone-msgs > *:nth-child(4) { animation-delay: 1.9s; }
+.phone-msgs > *:nth-child(5) { animation-delay: 2.4s; }
 
 .msg {
   max-width: 86%;
@@ -1216,18 +1247,18 @@ section { padding: 80px 0; }
   .nav-cta   { display: flex; }
   .hamburger { display: none; }
 
-  .hero { padding: 100px 0 0; }
+  .hero { padding: 64px 0 0; }
   .hero .container {
     grid-template-columns: 1fr 1fr;
     align-items: center;
-    gap: 72px;
+    gap: 40px;
   }
-  .hero-visual { justify-content: flex-end; }
+  .hero-visual { justify-content: center; }
 
   .hero-chip { display: flex; }
-  .chip-1 { top: 24px;  right: -16px; }
-  .chip-2 { bottom: 90px; left: -24px; }
-  .chip-3 { bottom: 18px; right: -16px; }
+  .chip-1 { top: 24px;  right: -16px; animation: chipEntrance .5s ease 2.8s both, chipBob 3.2s ease-in-out 2.8s infinite; }
+  .chip-2 { bottom: 90px; left: -24px; animation: chipEntrance .5s ease 3.3s both, chipBob 4s ease-in-out 3.3s infinite; }
+  .chip-3 { bottom: 18px; right: -16px; animation: chipEntrance .5s ease 3.8s both, chipBob 3.6s ease-in-out 3.8s infinite; }
 
   .features-grid   { grid-template-columns: repeat(4, 1fr); }
   .pricing-grid-4  { grid-template-columns: repeat(4, 1fr); }

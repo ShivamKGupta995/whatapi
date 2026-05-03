@@ -1,5 +1,5 @@
 # Block direct access to sensitive files
-<FilesMatch "^\.env$|^config\.php$">
+<FilesMatch "(^\.env.*|^config\.php$)">
     Order allow,deny
     Deny from all
 </FilesMatch>

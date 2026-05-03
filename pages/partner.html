@@ -8,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg">
+
   <link rel="stylesheet" href="../styles/main.css" />
   <style>
     /* ── Partner Page Styles ─────────────────────────────────── */
@@ -267,6 +269,98 @@
     .partner-cta-strip h2 { color: #fff; margin-bottom: 12px; }
     .partner-cta-strip p  { color: rgba(255,255,255,.85); margin-bottom: 28px; font-size: .96rem; max-width: 480px; margin-left: auto; margin-right: auto; }
 
+    /* ── Animations ─────────────────────────────────────────── */
+    @keyframes fadeInLeft {
+      from { opacity: 0; transform: translateX(-28px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes partnerFloat {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-10px); }
+    }
+
+    /* SVG handshake element keyframes */
+    @keyframes armSlideLeft {
+      from { transform: translateX(-55px); opacity: 0; }
+      to   { transform: translateX(0);     opacity: 1; }
+    }
+    @keyframes armSlideRight {
+      from { transform: translateX(55px); opacity: 0; }
+      to   { transform: translateX(0);    opacity: 1; }
+    }
+    @keyframes handPop {
+      from { transform: scale(0); opacity: 0; }
+      60%  { transform: scale(1.15); }
+      to   { transform: scale(1);   opacity: 1; }
+    }
+    @keyframes glowBreathe {
+      0%, 100% { opacity: .08; transform: scale(1); }
+      50%       { opacity: .18; transform: scale(1.07); }
+    }
+    @keyframes sparklePulse {
+      0%, 100% { opacity: .2; transform: scale(.6); }
+      50%       { opacity: 1;  transform: scale(1.3); }
+    }
+    @keyframes arrowBounceIn {
+      0%   { opacity: 0; transform: translateY(14px); }
+      60%  { opacity: 1; transform: translateY(-4px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* SVG element animations */
+    #hs-arm-left {
+      transform-box: fill-box; transform-origin: right center;
+      animation: armSlideLeft .55s ease .35s both;
+    }
+    #hs-arm-right {
+      transform-box: fill-box; transform-origin: left center;
+      animation: armSlideRight .55s ease .35s both;
+    }
+    #hs-hand-outer, #hs-hand-l, #hs-hand-r {
+      transform-box: fill-box; transform-origin: center;
+      animation: handPop .5s cubic-bezier(.34,1.56,.64,1) .85s both;
+    }
+    #hs-hand-l  { animation-delay: .9s; }
+    #hs-hand-r  { animation-delay: .95s; }
+    #hs-glow {
+      transform-box: fill-box; transform-origin: center;
+      animation: glowBreathe 3.5s ease-in-out 1s infinite;
+    }
+    .hs-sparkle {
+      transform-box: fill-box; transform-origin: center;
+      animation: sparklePulse 2.2s ease-in-out 1.1s infinite;
+    }
+    #hs-arrow {
+      transform-box: fill-box; transform-origin: center bottom;
+      animation: arrowBounceIn .5s ease 1.3s both;
+    }
+
+    /* Hero entrance */
+    .partner-hero-content { animation: fadeInLeft .7s ease both; }
+    .partner-hero-visual  { animation: heroVisualIn .7s ease .15s both; }
+    .partner-hero-img-box { animation: partnerFloat 5s ease-in-out 1.8s infinite; }
+
+    /* Cards — hidden until scroll-revealed */
+    .steps-grid .step-card,
+    .partner-types-grid .partner-type-card,
+    .why-grid .why-card { opacity: 0; }
+
+    .steps-grid.is-visible .step-card { animation: fadeInUp .5s ease both; }
+    .steps-grid.is-visible .step-card:nth-child(2) { animation-delay: .1s; }
+    .steps-grid.is-visible .step-card:nth-child(3) { animation-delay: .2s; }
+
+    .partner-types-grid.is-visible .partner-type-card { animation: fadeInUp .5s ease both; }
+    .partner-types-grid.is-visible .partner-type-card:nth-child(2) { animation-delay: .1s; }
+    .partner-types-grid.is-visible .partner-type-card:nth-child(3) { animation-delay: .2s; }
+
+    .why-grid.is-visible .why-card { animation: fadeInUp .5s ease both; }
+    .why-grid.is-visible .why-card:nth-child(2) { animation-delay: .1s; }
+    .why-grid.is-visible .why-card:nth-child(3) { animation-delay: .2s; }
+
     /* Responsive */
     @media (min-width: 768px) {
       .partner-hero .container { grid-template-columns: 1fr 1fr; }
@@ -355,24 +449,26 @@
         <!-- Handshake illustration -->
         <svg class="partner-handshake-svg" viewBox="0 0 320 220" fill="none" xmlns="http://www.w3.org/2000/svg">
           <!-- Background glow -->
-          <circle cx="160" cy="110" r="90" fill="rgba(255,255,255,0.08)"/>
+          <circle id="hs-glow" cx="160" cy="110" r="90" fill="rgba(255,255,255,0.08)"/>
           <!-- Left arm -->
-          <rect x="20" y="95" width="110" height="32" rx="16" fill="rgba(255,255,255,0.22)"/>
+          <rect id="hs-arm-left" x="20" y="95" width="110" height="32" rx="16" fill="rgba(255,255,255,0.22)"/>
           <!-- Right arm -->
-          <rect x="190" y="95" width="110" height="32" rx="16" fill="rgba(255,255,255,0.22)"/>
+          <rect id="hs-arm-right" x="190" y="95" width="110" height="32" rx="16" fill="rgba(255,255,255,0.22)"/>
           <!-- Clasped hands -->
-          <ellipse cx="160" cy="111" rx="34" ry="26" fill="rgba(255,255,255,0.30)"/>
-          <ellipse cx="152" cy="107" rx="18" ry="14" fill="rgba(255,255,255,0.45)"/>
-          <ellipse cx="168" cy="115" rx="18" ry="14" fill="rgba(255,255,255,0.35)"/>
+          <ellipse id="hs-hand-outer" cx="160" cy="111" rx="34" ry="26" fill="rgba(255,255,255,0.30)"/>
+          <ellipse id="hs-hand-l" cx="152" cy="107" rx="18" ry="14" fill="rgba(255,255,255,0.45)"/>
+          <ellipse id="hs-hand-r" cx="168" cy="115" rx="18" ry="14" fill="rgba(255,255,255,0.35)"/>
           <!-- Sparkles -->
-          <circle cx="100" cy="60" r="5" fill="rgba(255,255,255,0.6)"/>
-          <circle cx="220" cy="55" r="4" fill="rgba(255,255,255,0.5)"/>
-          <circle cx="75" cy="155" r="3" fill="rgba(255,255,255,0.4)"/>
-          <circle cx="248" cy="160" r="5" fill="rgba(255,255,255,0.5)"/>
-          <circle cx="160" cy="40" r="6" fill="rgba(255,255,255,0.6)"/>
+          <circle class="hs-sparkle" cx="100" cy="60" r="5" fill="rgba(255,255,255,0.6)"/>
+          <circle class="hs-sparkle" cx="220" cy="55" r="4" fill="rgba(255,255,255,0.5)" style="animation-delay:1.3s"/>
+          <circle class="hs-sparkle" cx="75" cy="155" r="3" fill="rgba(255,255,255,0.4)" style="animation-delay:1.5s"/>
+          <circle class="hs-sparkle" cx="248" cy="160" r="5" fill="rgba(255,255,255,0.5)" style="animation-delay:1.7s"/>
+          <circle class="hs-sparkle" cx="160" cy="40" r="6" fill="rgba(255,255,255,0.6)" style="animation-delay:1.9s"/>
           <!-- Upward arrow -->
-          <polyline points="155,175 160,162 165,175" stroke="rgba(255,255,255,0.7)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-          <line x1="160" y1="162" x2="160" y2="186" stroke="rgba(255,255,255,0.7)" stroke-width="3" stroke-linecap="round"/>
+          <g id="hs-arrow">
+            <polyline points="155,175 160,162 165,175" stroke="rgba(255,255,255,0.7)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="160" y1="162" x2="160" y2="186" stroke="rgba(255,255,255,0.7)" stroke-width="3" stroke-linecap="round"/>
+          </g>
         </svg>
       </div>
     </div>
@@ -392,7 +488,7 @@
 <!-- ══════════════════════════════════════════════════════════
      TRUSTED BY
 ═══════════════════════════════════════════════════════════ -->
-<div class="trusted-by">
+<!-- <div class="trusted-by">
   <div class="container">
     <p>Trusted by thousands of businesses like yours</p>
     <div class="trusted-logos">
@@ -406,7 +502,7 @@
       <div class="trusted-logo">Univercell</div>
     </div>
   </div>
-</div>
+</div> -->
 
 
 <!-- ══════════════════════════════════════════════════════════
@@ -771,6 +867,19 @@
       document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
       if (!isOpen) item.classList.add('open');
     });
+  });
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.steps-grid, .partner-types-grid, .why-grid').forEach(el => {
+    revealObserver.observe(el);
   });
 </script>
 
