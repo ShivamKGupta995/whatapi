@@ -33,7 +33,7 @@ $cats = getDb()->query('SELECT * FROM categories ORDER BY sort_order, name')->fe
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: 'Inter', sans-serif; background: #F8FAFC; color: #0F172A; display: flex; min-height: 100vh; }
 
-    /* Sidebar — same as dashboard */
+    /* Sidebar same as dashboard */
     .sidebar {
       width: 240px; background: #0B1613; color: rgba(255,255,255,.7);
       display: flex; flex-direction: column; flex-shrink: 0;
@@ -366,7 +366,7 @@ async function handleThumbUpload(input) {
     document.getElementById('thumbnailUrl').value = '';
     document.getElementById('thumbDrop').classList.add('has-image');
     document.getElementById('thumbPreview').innerHTML = `<img src="${url}" alt="Thumbnail"/>`;
-    showToast('Preview only — backend not connected', 'error');
+    showToast('Preview only backend not connected', 'error');
   }
 }
 

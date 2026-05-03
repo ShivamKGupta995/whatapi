@@ -111,7 +111,7 @@ if ($success) {
     if (!file_exists($htaccess)) file_put_contents($htaccess, "Options -Indexes\n");
     $steps[] = is_writable($uploadDir)
         ? ['ok',  'Uploads directory', 'Created and writable at /backend/uploads/']
-        : ['err', 'Uploads directory', 'Not writable — check permissions (chmod 755)'];
+        : ['err', 'Uploads directory', 'Not writable check permissions (chmod 755)'];
 }
 ?>
 

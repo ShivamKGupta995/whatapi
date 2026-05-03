@@ -15,7 +15,7 @@ whatapi-website/
 ├── index.html
 ├── CLAUDE.md
 ├── styles/
-│   ├── main.css          # global design system — used by all pages
+│   ├── main.css          # global design system used by all pages
 │   ├── blog.css          # blog-specific styles
 │   └── industries.css    # industries page styles
 ├── pages/
@@ -32,7 +32,7 @@ whatapi-website/
 │   ├── config.php        # loads .env, defines DB + SMTP + admin constants
 │   ├── admin/            # dashboard, editor, login, delete, logout
 │   ├── api/
-│   │   ├── contact.php   # contact form handler — validates + sends email via SMTP
+│   │   ├── contact.php   # contact form handler validates + sends email via SMTP
 │   │   ├── post.php
 │   │   ├── posts.php
 │   │   ├── categories.php
@@ -59,7 +59,7 @@ whatapi-website/
 
 ## 🎯 Tech Stack & Rules
 
-- **Pure HTML + CSS — NO Tailwind, NO frameworks, NO build tools**
+- **Pure HTML + CSS NO Tailwind, NO frameworks, NO build tools**
 - Flexbox + CSS Grid for layout
 - Mobile-first responsive design
 - Static and deployable on Netlify, Vercel, or cPanel
@@ -95,7 +95,7 @@ whatapi-website/
 
 Font family: `Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif`
 
-### Weights — ONLY these three:
+### Weights ONLY these three:
 
 | Element | Weight |
 |---|---|
@@ -116,7 +116,7 @@ Font family: `Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, A
 
 ## 🧱 UI Style Guidelines
 
-- Light theme only — NO dark mode
+- Light theme only NO dark mode
 - Clean, minimal SaaS layout
 
 ### Shadows
@@ -162,7 +162,7 @@ Mobile-first:
 | Industries | `/pages/industries.html` | |
 | Partner | `/pages/partner.html` | |
 | Blog | `/blog/index.html` | |
-| Get a Demo | `/pages/contact.html` | Primary CTA — green button |
+| Get a Demo | `/pages/contact.html` | Primary CTA green button |
 
 ### Desktop
 - Horizontal sticky navbar
@@ -174,13 +174,13 @@ Mobile-first:
 
 ---
 
-## 💰 Pricing (Authoritative — use these everywhere)
+## 💰 Pricing (Authoritative use these everywhere)
 
 ### Platform Plans
 
 | Plan | Price | Yearly |
 |---|---|---|
-| Free Forever | ₹0 | — |
+| Free Forever | ₹0 | |
 | Starter | ₹1,399/mo | ₹1,259/mo |
 | Growth | ₹2,999/mo | ₹2,699/mo |
 | Enterprise | Custom | Custom |
@@ -213,7 +213,7 @@ Mobile-first:
 - SLA guarantee
 - Onboarding support
 
-### Per-Message Pricing (Meta WhatsApp Cloud API — India rates)
+### Per-Message Pricing (Meta WhatsApp Cloud API India rates)
 
 | Message Type | Rate |
 |---|---|
@@ -225,7 +225,7 @@ Mobile-first:
 These are billed by Meta separately on top of platform plans.
 
 ### Add-ons
-- **Chatbot Flows**: ₹2,500 for 5 flows — sold separately, NOT included in any plan
+- **Chatbot Flows**: ₹2,500 for 5 flows sold separately, NOT included in any plan
 
 ### Billing
 - Pre-paid monthly billing
@@ -236,15 +236,15 @@ These are billed by Meta separately on top of platform plans.
 
 ## 🏠 Homepage Structure (index.html)
 
-1. **Hero** — H1: "Whatapi – WhatsApp-style API for Indian SMBs", primary CTA + secondary CTA (both → `/pages/contact.html`)
-2. **Stats bar** — 25+ businesses, 98% delivery, 50M+ messages, 99.9% uptime
-3. **Feature Highlights** — Broadcasts, Catalog, Automation, API Integration (SVG icons)
-4. **Use Cases** — E-commerce, Agencies, Education, Real Estate (SVG icons, links → `/pages/industries.html`)
-5. **Pricing Preview** — Free Forever banner + Starter / Growth / Enterprise cards
-6. **FAQ Preview** — 5 accordion items, "View All FAQs" → `/pages/faq.html`
-7. **CTA Banner** — both buttons → `/pages/contact.html`
-8. **Footer** — links to all pages
-9. **Floating WA button** — bottom-right, links → `/pages/contact.html`
+1. **Hero** H1: "Whatapi – WhatsApp-style API for Indian SMBs", primary CTA + secondary CTA (both → `/pages/contact.html`)
+2. **Stats bar** 25+ businesses, 98% delivery, 50M+ messages, 99.9% uptime
+3. **Feature Highlights** Broadcasts, Catalog, Automation, API Integration (SVG icons)
+4. **Use Cases** E-commerce, Agencies, Education, Real Estate (SVG icons, links → `/pages/industries.html`)
+5. **Pricing Preview** Free Forever banner + Starter / Growth / Enterprise cards
+6. **FAQ Preview** 5 accordion items, "View All FAQs" → `/pages/faq.html`
+7. **CTA Banner** both buttons → `/pages/contact.html`
+8. **Footer** links to all pages
+9. **Floating WA button** bottom-right, links → `/pages/contact.html`
 
 ---
 
@@ -281,30 +281,30 @@ These are billed by Meta separately on top of platform plans.
 - Primary destination for all site CTAs
 - **Form submission:** POSTs to `/backend/api/contact.php` (PHP SMTP via Hostinger)
 - Includes honeypot (`botcheck`) for spam protection
-- No third-party form service — self-hosted email delivery
+- No third-party form service self-hosted email delivery
 
 ---
 
 ## 📝 Blog
 
 ### Public Pages
-- `blog/index.html` — listing page, fetches posts from PHP API
-- `blog/post.html` — single post renderer, fetches post by slug from PHP API
+- `blog/index.html` listing page, fetches posts from PHP API
+- `blog/post.html` single post renderer, fetches post by slug from PHP API
 
 ### Post Page Layout (Medium-style)
-1. **Full-width hero image** — spans the entire viewport width, no border-radius, above all text
-2. **Breadcrumb row** — left: Home › Blog › Category; right: clickable **Published** badge → links to `editor.php?id={id}` in admin
-3. **Category pill** — coloured tag
-4. **H1 title** — large, tight letter-spacing
-5. **Excerpt** — subtitle style, 1.15rem
-6. **Author + meta bar** — avatar, name, role, date, read time, share buttons
+1. **Full-width hero image** spans the entire viewport width, no border-radius, above all text
+2. **Breadcrumb row** left: Home › Blog › Category; right: clickable **Published** badge → links to `editor.php?id={id}` in admin
+3. **Category pill** coloured tag
+4. **H1 title** large, tight letter-spacing
+5. **Excerpt** subtitle style, 1.15rem
+6. **Author + meta bar** avatar, name, role, date, read time, share buttons
 7. **Article body** + TOC sidebar (desktop only)
 
 The `.post-hero .container` uses `max-width: 740px` inner constraint (`#postHeroContent`) but the container itself matches `.post-body .container` width at all breakpoints so left edges align.
 
 ### Backend
-- `backend/api/posts.php`, `post.php`, `categories.php` — REST endpoints
-- `backend/admin/` — protected CMS for writing/editing posts
+- `backend/api/posts.php`, `post.php`, `categories.php` REST endpoints
+- `backend/admin/` protected CMS for writing/editing posts
 - SEO-friendly: semantic HTML (h1–h3), internal links to Pricing and feature pages
 - Content focus: Indian SMB WhatsApp use cases
 
@@ -315,11 +315,11 @@ When `p.id` is available (real DB post), a **"Published / Draft" badge** with a 
 
 ## 📧 Contact Form Email (backend/api/contact.php)
 
-- Uses **PHPMailer** (3 standalone files in `backend/includes/PHPMailer/` — no Composer)
+- Uses **PHPMailer** (3 standalone files in `backend/includes/PHPMailer/` no Composer)
 - Sends via Hostinger SMTP: `smtp.hostinger.com:587` (STARTTLS)
 - From address must match SMTP auth user (Hostinger requirement)
 - Reply-To is set to the visitor's email so replies go directly to them
-- Honeypot field (`botcheck`) — if non-empty, silently returns success without sending
+- Honeypot field (`botcheck`) if non-empty, silently returns success without sending
 - Required env vars (set in `.env.production` on server):
 
 ```
@@ -332,11 +332,11 @@ CONTACT_TO=support@codimai.com
 
 ---
 
-## 🎨 Icon System — SVG Only (No Emoji as Icons)
+## 🎨 Icon System SVG Only (No Emoji as Icons)
 
 **Rule: Never use emoji characters as visual icons anywhere on the site.**
 
-Only ✓ (U+2713) and ✗ (U+2717) Unicode text symbols are acceptable in plan feature lists — these are typographic, not emoji.
+Only ✓ (U+2713) and ✗ (U+2717) Unicode text symbols are acceptable in plan feature lists these are typographic, not emoji.
 
 ### Standard card/section icon format
 
@@ -379,7 +379,7 @@ const BLOG_ICONS = {
 ```
 
 ### Icon source style
-Feather Icons / Lucide — stroke-based, 24×24 viewBox.
+Feather Icons / Lucide stroke-based, 24×24 viewBox.
 
 ---
 
@@ -389,7 +389,7 @@ Feather Icons / Lucide — stroke-based, 24×24 viewBox.
 - No inline CSS (use class-based CSS in stylesheets)
 - CSS organized into: Layout → Components → Utilities
 - Minimal JS: only for navbar toggle, FAQ accordion, pricing billing toggle, blog fetch
-- Clean, readable code — no comments unless the WHY is non-obvious
+- Clean, readable code no comments unless the WHY is non-obvious
 
 ---
 

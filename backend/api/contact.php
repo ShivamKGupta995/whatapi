@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     jsonError('Method not allowed', 405);
 }
 
-/* ── Honeypot — silent drop to fool bots ────────────────── */
+/* ── Honeypot silent drop to fool bots ────────────────── */
 if (!empty($_POST['botcheck'])) {
     jsonOut(['success' => true]);
 }

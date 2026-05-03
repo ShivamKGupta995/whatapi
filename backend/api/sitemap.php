@@ -1,5 +1,5 @@
 <?php
-/* Generates /sitemap.xml for all published blog posts — great for SEO */
+/* Generates /sitemap.xml for all published blog posts great for SEO */
 require_once __DIR__ . '/../includes/db.php';
 require_once __DIR__ . '/../config.php';
 
