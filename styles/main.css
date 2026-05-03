@@ -608,6 +608,38 @@ section { padding: 80px 0; }
 .use-case-card h3 { margin-bottom: 5px; font-size: .98rem; }
 .use-case-card p  { font-size: .86rem; }
 
+/* ── Free plan banner ───────────────────────────────────────── */
+.free-plan-banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  background: rgba(37,211,102,.08);
+  border: 1px solid rgba(37,211,102,.25);
+  border-radius: var(--radius);
+  padding: 14px 20px;
+  margin-bottom: 28px;
+  font-size: .875rem;
+  color: var(--color-text-muted);
+}
+.free-plan-banner .free-badge {
+  background: var(--color-primary);
+  color: #fff;
+  font-size: .72rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.free-plan-banner a {
+  color: var(--color-accent);
+  font-weight: 600;
+  margin-left: auto;
+  white-space: nowrap;
+}
+.free-plan-banner a:hover { text-decoration: underline; }
+
 /* ── Pricing ────────────────────────────────────────────────── */
 .pricing { background: var(--color-bg); }
 .pricing-grid {

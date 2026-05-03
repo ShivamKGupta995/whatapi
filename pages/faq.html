@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Whatapi FAQ – Answers to your questions about WhatsApp API pricing, features, setup, and compliance for Indian businesses." />
+  <title>FAQ – Whatapi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles/main.css" />
+  <style>
+    .faq-page-hero {
+      background: linear-gradient(160deg, #e8fdf3 0%, #f7fdfc 50%, #fff 100%);
+      padding: 64px 0 56px;
+      text-align: center;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .faq-page-hero h1 { margin-bottom: 12px; }
+    .faq-page-hero p  { font-size: 1rem; max-width: 500px; margin: 0 auto; }
+
+    .faq-page { background: #fff; padding: 64px 0 80px; }
+    .faq-page .container { max-width: 820px; }
+
+    .faq-category { margin-bottom: 52px; }
+    .faq-category:last-child { margin-bottom: 0; }
+
+    .faq-cat-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      padding-bottom: 14px;
+      border-bottom: 2px solid var(--color-border);
+    }
+    .faq-cat-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius);
+      background: rgba(37,211,102,.1);
+      border: 1px solid rgba(37,211,102,.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .faq-cat-header h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--color-text);
+      letter-spacing: -.01em;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════
+     NAVBAR
+═══════════════════════════════════════════════════════════ -->
+<header class="navbar">
+  <div class="container">
+
+    <a href="../index.html" class="nav-logo">
+      <div class="logo-icon">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        </svg>
+      </div>
+      Whatapi
+    </a>
+
+    <nav class="nav-links">
+      <div class="nav-item"><a href="pricing.html">Pricing</a></div>
+      <div class="nav-item"><a href="industries.html">Industries</a></div>
+      <div class="nav-item"><a href="partner.html">Partner</a></div>
+      <div class="nav-item"><a href="../blog/index.html">Blog</a></div>
+    </nav>
+
+    <div class="nav-cta">
+      <a href="contact.html" class="btn btn-primary btn-sm">Get a Demo</a>
+    </div>
+
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="pricing.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg> Pricing</a>
+  <a href="industries.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg> Industries</a>
+  <a href="partner.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg> Partner</a>
+  <a href="../blog/index.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> Blog</a>
+  <div class="mobile-cta">
+    <a href="contact.html" class="btn btn-primary full-width">Get a Demo</a>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════════════════════ -->
+<section class="faq-page-hero">
+  <div class="container">
+    <span class="section-label">FAQ</span>
+    <h1>Frequently Asked Questions</h1>
+    <p>Everything you need to know about Whatapi — pricing, features, setup, and compliance.</p>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     FAQ CATEGORIES
+═══════════════════════════════════════════════════════════ -->
+<section class="faq-page">
+  <div class="container">
+
+    <!-- ── Pricing ────────────────────────────────────────── -->
+    <div class="faq-category">
+      <div class="faq-cat-header">
+        <div class="faq-cat-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="1" x2="12" y2="23"/>
+            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+          </svg>
+        </div>
+        <h2>Pricing</h2>
+      </div>
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <button class="faq-question">
+            What plans does Whatapi offer?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Whatapi offers four plans: <strong>Free Forever</strong> (₹0), <strong>Starter</strong> (₹1,399/month), <strong>Growth</strong> (₹2,999/month), and <strong>Enterprise</strong> (custom pricing). All paid plans include a 14-day free trial. See the <a href="pricing.html" style="color:var(--color-accent);font-weight:600;">full pricing page</a> for a complete feature breakdown.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            Is billing done in INR? Do you issue GST invoices?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Yes — all plans are billed in Indian Rupees (₹) with proper GST invoices included. We accept UPI, net banking, debit/credit cards, and NEFT. Zero forex surprises.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            What is the per-message pricing for WhatsApp?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>WhatsApp uses per-template message pricing (effective January 1, 2026). For Indian users: Marketing messages ₹1.09, Utility messages ₹0.145, Authentication messages ₹0.145. Service messages (replies within 24h window) are completely <strong>FREE</strong> on all plans.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            Are WhatsApp Conversation Credits managed separately?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Yes. WhatsApp Conversation Credits (WCC) are recharged separately from your plan subscription. Every template message sent deducts from your WCC balance. You get ₹50 free credits on signup — enough to test with several users. A minimum ₹10 balance is needed to keep chatbots and automation active.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            Is billing pre-paid or post-paid?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>All billing on Whatapi is pre-paid. You recharge your WCC balance before sending messages, giving you full control over your spend. Your monthly plan subscription is billed at the start of each billing cycle.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            How do plan upgrades or downgrades work?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Upgrades are immediate and billed on a pro-rata basis — you only pay the difference for the remaining days in your cycle. Downgrades take effect at the start of your next billing cycle. Unused amounts are credited to your Whatapi wallet. No lock-in periods.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            Do you offer yearly plans? Is there a discount?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Yes. Yearly plans come with a 10% discount. Starter yearly is ₹1,259/month (billed ₹15,108/year), Growth yearly is ₹2,699/month (billed ₹32,388/year). You save up to ₹3,600/year on Growth.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- ── Features ───────────────────────────────────────── -->
+    <div class="faq-category">
+      <div class="faq-cat-header">
+        <div class="faq-cat-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+          </svg>
+        </div>
+        <h2>Features</h2>
+      </div>
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <button class="faq-question">
+            What is a Broadcast campaign?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Broadcasts let you send one message to thousands of opted-in contacts simultaneously — promotions, offers, order updates, or announcements. You can filter your audience by tags, attributes, or previous interactions (retargeting). Rich media including images, PDFs, and videos are supported.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            What is the WhatsApp Catalog feature?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>WhatsApp Catalog lets you list your products or services directly inside WhatsApp. Customers can browse items, view prices, and share products — all without leaving the chat. You can connect it with Shopify or WooCommerce stores on the Growth plan.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            Do you support Hindi and regional languages?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Yes. You can send messages in Hindi, Marathi, Tamil, Telugu, Gujarati, Bengali, Kannada, and any other language supported by WhatsApp. Our no-code chatbot builder also supports multilingual conversation flows.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            Are chatbot flows included in the plan price?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Chatbot flows are available as an add-on across Starter and Growth plans — priced at ₹2,500 for a pack of 5 flows. Enterprise customers get unlimited flows included. The no-code flow builder supports keyword triggers, button replies, conditional logic, and API webhooks.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            What does Unlimited Users mean?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Unlimited Users means there is no cap on how many contacts you can store or message in a month — be it 1,000 or 1 million. You only pay per template message sent (WCC charges), not for the number of contacts in your account.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            What integrations does Whatapi support?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Growth and Enterprise plans include Shopify, WooCommerce, Dialogflow, and Project APIs. All plans with API access can connect to 100+ tools via Zapier, Make (Integromat), or direct REST API. Webhooks are available on Enterprise for real-time event-driven integrations.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- ── Setup ──────────────────────────────────────────── -->
+    <div class="faq-category">
+      <div class="faq-cat-header">
+        <div class="faq-cat-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/>
+          </svg>
+        </div>
+        <h2>Setup</h2>
+      </div>
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <button class="faq-question">
+            How long does it take to set up Whatapi?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Most businesses are live within 5 minutes. Sign up, connect your WhatsApp Business number via Meta's Cloud API, and you're ready to send messages. Our onboarding wizard guides you step-by-step — no technical knowledge required.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            Do I need a Facebook Business account to use Whatapi?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Yes. The WhatsApp Business API requires a verified Meta Business account. Whatapi walks you through the verification process as part of onboarding. We also help you apply for the WhatsApp Blue Tick (verified badge) at no extra charge.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            Is there any fee to get the WhatsApp Business API?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>No. Whatapi doesn't charge anything to procure the WhatsApp Business API for your business. API setup and Blue Tick verification application are completely free through Whatapi.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            Can I use my existing WhatsApp Business number?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Yes, you can migrate your existing WhatsApp Business number to Whatapi. Note that migrating a number to the API means you can no longer use the WhatsApp Business app on your phone with that number. Your message history is preserved during migration.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            How do I create and get template messages approved?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>You create template messages directly from the Whatapi dashboard and submit them to Meta for approval. Approval typically takes 10 minutes to 24 hours. Whatapi provides a template builder with pre-built examples for common use cases like order updates, OTPs, and promotions.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- ── Compliance ─────────────────────────────────────── -->
+    <div class="faq-category">
+      <div class="faq-cat-header">
+        <div class="faq-cat-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <polyline points="9 12 11 14 15 10"/>
+          </svg>
+        </div>
+        <h2>Compliance</h2>
+      </div>
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <button class="faq-question">
+            Is Whatapi an official WhatsApp API provider?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Yes. Whatapi is built on Meta's official WhatsApp Business API (Cloud API). We are a Meta Business Partner. Your messages are delivered through WhatsApp's own infrastructure — ensuring full compliance, end-to-end encryption, and high deliverability.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            Do I need user consent before messaging them on WhatsApp?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Yes. WhatsApp's policy requires that recipients have opted in to receive messages from your business. Whatapi provides opt-in collection tools (web widgets, QR codes, WhatsApp links) to help you build a compliant contact list. Sending to users without consent can result in your number being flagged or banned by Meta.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            What is a Customer Service Window / 24-hour session window?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>A 24-hour service window opens whenever a user messages your WhatsApp Business number. Within this window you can send any free-form message at no extra charge, and utility templates delivered during this window are also free. The window resets every time the user sends a new message.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            What happens if my messages get flagged or my number is blocked?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Meta monitors message quality based on user feedback (blocks, reports). If your number's quality rating drops, you may face messaging limits or temporary restrictions. Whatapi displays your quality score in real time and alerts you when it drops so you can adjust your campaigns before any restriction takes effect.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            Is Whatapi compliant with India's PDPB / data privacy laws?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Yes. Whatapi stores all customer data on servers located in India and follows data handling practices aligned with India's Digital Personal Data Protection Act (DPDPA). Your contact data is never sold or shared with third parties. A full Data Processing Agreement (DPA) is available on Enterprise plans.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     CTA BANNER
+═══════════════════════════════════════════════════════════ -->
+<section class="cta-banner">
+  <div class="container">
+    <h2>Still have questions?</h2>
+    <p>Our team is available Monday–Saturday, 9 AM – 7 PM IST. Chat with us on WhatsApp or book a free demo.</p>
+    <div class="cta-banner-actions">
+      <a href="contact.html" class="btn btn-white btn-lg">Book a Free Demo</a>
+      <a href="https://wa.me/919999999999" class="btn btn-ghost btn-lg" target="_blank" rel="noopener">Chat on WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <a href="../index.html" class="nav-logo">
+          <div class="logo-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          Whatapi
+        </a>
+        <p>WhatsApp Business API platform for Indian SMBs. Send, automate, and grow — entirely in INR.</p>
+        <div class="wa-badge">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Meta Official Partner
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="features/broadcasts.html">Broadcasts</a></li>
+          <li><a href="features/catalog.html">WhatsApp Catalog</a></li>
+          <li><a href="#">Automation</a></li>
+          <li><a href="#">API Docs</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="../blog/index.html">Blog</a></li>
+          <li><a href="industries.html">Industries</a></li>
+          <li><a href="partner.html">Partner Program</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contact.html">Book a Demo</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Whatapi. All rights reserved.</span>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Refund Policy</a>
+        <a href="#">Compliance</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     FLOATING WHATSAPP BUTTON
+═══════════════════════════════════════════════════════════ -->
+<div class="wa-float">
+  <span class="wa-float-label">Chat with us</span>
+  <a href="https://wa.me/919999999999" class="wa-float-btn" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="#fff">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+    </svg>
+  </a>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     JS
+═══════════════════════════════════════════════════════════ -->
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open');
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+</script>
+
+</body>
+</html>
