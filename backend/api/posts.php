@@ -40,8 +40,7 @@ if ($method === 'GET') {
     $countSql = "SELECT COUNT(*) FROM posts p
                  LEFT JOIN categories c ON p.category_id = c.id
                  WHERE $cond";
-    $total = (int) $db->prepare($countSql)->execute($params) ? $db->prepare($countSql)->fetchColumn() : 0;
-    $stmt  = $db->prepare($countSql);
+    $stmt = $db->prepare($countSql);
     $stmt->execute($params);
     $total = (int) $stmt->fetchColumn();
 

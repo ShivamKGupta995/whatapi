@@ -325,12 +325,7 @@
 
         <!-- The form -->
         <form id="demoForm" novalidate>
-          <!-- Hidden fields for Web3Forms -->
-          <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_KEY_HERE" />
-          <input type="hidden" name="subject" value="New Demo Request – Whatapi" />
-          <input type="hidden" name="from_name" value="Whatapi Demo Form" />
-          <input type="hidden" name="redirect" value="false" />
-          <input type="checkbox" name="botcheck" style="display:none" />
+          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
 
           <div class="form-row">
             <div class="form-group">
@@ -459,7 +454,7 @@
 
     try {
       const data = new FormData(form);
-      const res  = await fetch('https://api.web3forms.com/submit', {
+      const res  = await fetch('/backend/api/contact.php', {
         method: 'POST',
         body: data
       });

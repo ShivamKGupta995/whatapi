@@ -94,8 +94,13 @@
      POST HERO
 ═══════════════════════════════════════════════════════════ -->
 <div class="post-hero" id="postHero">
+  <!-- Hero image: full-width, above all text -->
+  <div id="postThumbnailWrap">
+    <div class="skeleton" style="width:100%;aspect-ratio:16/7;border-radius:0;display:block;"></div>
+  </div>
+
   <div class="container">
-    <div id="postHeroContent">
+    <div id="postHeroContent" class="post-hero-inner">
       <!-- Skeleton while loading -->
       <div style="margin-bottom:16px;">
         <div class="skeleton" style="height:14px;width:220px;margin-bottom:20px;border-radius:4px;"></div>
@@ -107,7 +112,6 @@
         <div class="skeleton" style="height:40px;width:300px;border-radius:8px;"></div>
       </div>
     </div>
-    <div id="postThumbnailWrap"></div>
   </div>
 </div>
 
@@ -245,7 +249,7 @@
 
 <script>
 /* ── Config ─────────────────────────────────────────────────── */
-const API_BASE    = '';  // e.g. 'https://yourdomain.com/backend/api'
+const API_BASE    = '/backend/api';
 const SITE_URL    = 'https://whatapi.in';
 const SITE_NAME   = 'Whatapi';
 
@@ -410,13 +414,20 @@ function renderPost(p) {
 
   /* Hero */
   document.getElementById('postHeroContent').innerHTML = `
-    <nav class="post-breadcrumb" aria-label="Breadcrumb">
-      <a href="../index.html">Home</a>
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-      <a href="index.html">Blog</a>
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-      <span>${escHtml(p.category)}</span>
-    </nav>
+    <div class="post-breadcrumb-row">
+      <nav class="post-breadcrumb" aria-label="Breadcrumb">
+        <a href="../index.html">Home</a>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+        <a href="index.html">Blog</a>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+        <span>${escHtml(p.category)}</span>
+      </nav>
+      ${p.id ? `<a href="/backend/admin/editor.php?id=${p.id}" class="post-admin-link" title="Edit this post in Admin">
+        <span class="post-status-dot${p.status === 'published' ? ' is-live' : ''}"></span>
+        ${p.status === 'published' ? 'Published' : 'Draft'}
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+      </a>` : ''}
+    </div>
 
     <span class="post-hero-cat" style="background:${hexToRgba(catColor,.12)};color:${catColor}">${escHtml(p.category)}</span>
     <h1>${escHtml(p.title)}</h1>
@@ -458,9 +469,9 @@ function renderPost(p) {
 
   /* Thumbnail */
   const tw = document.getElementById('postThumbnailWrap');
-  if (p.thumbnail) {
+  if (p.thumbnail_url) {
     tw.className = 'post-thumbnail-wrap';
-    tw.innerHTML = `<img src="${p.thumbnail}" alt="${escHtml(p.title)}" width="1200" height="450" loading="eager" />`;
+    tw.innerHTML = `<img src="${p.thumbnail_url}" alt="${escHtml(p.title)}" width="1200" height="450" loading="eager" />`;
   } else {
     tw.className = 'post-thumbnail-wrap';
     tw.innerHTML = `<div class="post-icon-placeholder">${BLOG_ICONS[p.emoji] || BLOG_ICONS['📝']}</div>`;
@@ -492,7 +503,7 @@ function renderTags(tags) {
 /* ── SEO ────────────────────────────────────────────────────── */
 function updateSEO(p) {
   const postUrl  = `${SITE_URL}/blog/post.html?slug=${p.slug}`;
-  const imgUrl   = p.thumbnail || `${SITE_URL}/assets/images/og-blog.png`;
+  const imgUrl   = p.thumbnail_url || `${SITE_URL}/assets/images/og-blog.png`;
   const desc     = p.meta_description || p.excerpt;
   const title    = `${p.title} | ${SITE_NAME} Blog`;
 

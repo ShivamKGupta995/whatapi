@@ -1,3 +1,23 @@
+<?php
+require_once __DIR__ . '/../includes/auth.php';
+require_once __DIR__ . '/../includes/db.php';
+require_once __DIR__ . '/../includes/helpers.php';
+require_once __DIR__ . '/../config.php';
+requireLogin();
+
+$postId = (int)($_GET['id'] ?? 0);
+$post   = null;
+$isEdit = false;
+
+if ($postId) {
+    $stmt = getDb()->prepare('SELECT p.*, c.name AS category_name FROM posts p LEFT JOIN categories c ON p.category_id=c.id WHERE p.id=?');
+    $stmt->execute([$postId]);
+    $post   = $stmt->fetch();
+    $isEdit = (bool)$post;
+}
+
+$cats = getDb()->query('SELECT * FROM categories ORDER BY sort_order, name')->fetchAll();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -71,7 +91,10 @@
 
     /* Quill */
     .quill-wrap { margin-top: 24px; }
-    .quill-label { font-size: .78rem; font-weight: 600; color: #374151; letter-spacing: .02em; margin-bottom: 8px; }
+    .quill-label-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+    .quill-label { font-size: .78rem; font-weight: 600; color: #374151; letter-spacing: .02em; }
+    .upload-file-btn { display: inline-flex; align-items: center; gap: 5px; font-size: .76rem; font-weight: 500; color: #128C7E; cursor: pointer; padding: 4px 10px; border: 1px solid #25D366; border-radius: 6px; transition: background .15s; }
+    .upload-file-btn:hover { background: rgba(37,211,102,.08); }
     #quillEditor { min-height: 420px; font-family: 'Inter', sans-serif; font-size: .95rem; line-height: 1.75; }
     .ql-toolbar { border-radius: 8px 8px 0 0; border-color: #E2E8F0 !important; background: #F8FAFC; }
     .ql-container { border-radius: 0 0 8px 8px; border-color: #E2E8F0 !important; }
@@ -113,26 +136,6 @@
   </style>
 </head>
 <body>
-<?php
-require_once __DIR__ . '/../includes/auth.php';
-require_once __DIR__ . '/../includes/db.php';
-require_once __DIR__ . '/../includes/helpers.php';
-require_once __DIR__ . '/../config.php';
-requireLogin();
-
-$postId   = (int)($_GET['id'] ?? 0);
-$post     = null;
-$isEdit   = false;
-
-if ($postId) {
-    $stmt = getDb()->prepare('SELECT p.*, c.name AS category_name FROM posts p LEFT JOIN categories c ON p.category_id=c.id WHERE p.id=?');
-    $stmt->execute([$postId]);
-    $post   = $stmt->fetch();
-    $isEdit = (bool)$post;
-}
-
-$cats = getDb()->query('SELECT * FROM categories ORDER BY sort_order, name')->fetchAll();
-?>
 
 <!-- Sidebar -->
 <aside class="sidebar">
@@ -181,7 +184,14 @@ $cats = getDb()->query('SELECT * FROM categories ORDER BY sort_order, name')->fe
       </div>
 
       <div class="quill-wrap">
-        <div class="quill-label">Content</div>
+        <div class="quill-label-row">
+          <span class="quill-label">Content</span>
+          <label class="upload-file-btn" title="Import HTML or Markdown file">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            Import .html / .md
+            <input type="file" id="contentFileInput" accept=".html,.htm,.md,.markdown" style="display:none"/>
+          </label>
+        </div>
         <div id="quillEditor"><?= $post['content'] ?? '' ?></div>
         <input type="hidden" id="postContent" />
       </div>
@@ -283,7 +293,7 @@ $cats = getDb()->query('SELECT * FROM categories ORDER BY sort_order, name')->fe
 
 <script src="https://cdn.quilljs.com/1.3.7/quill.js"></script>
 <script>
-const API_BASE = '<?= SITE_URL ?>/backend/api';
+const API_BASE = '/backend/api';
 const POST_ID  = <?= $postId ?: 'null' ?>;
 
 /* ── Init Quill ────────────────────────────────────────────── */
@@ -411,6 +421,50 @@ async function savePost(status) {
   } catch {
     showToast('Could not connect to backend. Is the API configured?', 'error');
   }
+}
+
+/* ── Import HTML / MD file into Quill ───────────────────────── */
+document.getElementById('contentFileInput').addEventListener('change', function () {
+  const file = this.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = function (e) {
+    const text = e.target.result;
+    const isHtml = /\.(html?|htm)$/i.test(file.name);
+    const html   = isHtml ? extractBodyHtml(text) : mdToHtml(text);
+
+    if (quill.getLength() > 1) {
+      if (!confirm('Replace current content with the imported file?')) return;
+    }
+    quill.root.innerHTML = html;
+    showToast('File imported into editor', 'success');
+  };
+  reader.readAsText(file);
+  this.value = '';
+});
+
+function extractBodyHtml(html) {
+  const m = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
+  return m ? m[1].trim() : html;
+}
+
+function mdToHtml(md) {
+  return md
+    .replace(/^(---+|\*\*\*+|___+)\s*$/gm, '<hr>')
+    .replace(/^#{4}\s+(.+)$/gm, '<h4>$1</h4>')
+    .replace(/^#{3}\s+(.+)$/gm, '<h3>$1</h3>')
+    .replace(/^#{2}\s+(.+)$/gm, '<h2>$1</h2>')
+    .replace(/^#{1}\s+(.+)$/gm, '<h2>$1</h2>')
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+    .replace(/`(.+?)`/g, '<code>$1</code>')
+    .replace(/^>\s+(.+)$/gm, '<blockquote>$1</blockquote>')
+    .replace(/^[-*]\s+(.+)$/gm, '<li>$1</li>')
+    .replace(/(<li>[\s\S]+?<\/li>)/g, '<ul>$1</ul>')
+    .replace(/\n{2,}/g, '</p><p>')
+    .replace(/^(?!<[a-z])(.+)$/gm, '<p>$1</p>')
+    .replace(/<\/p><p><\/p>/g, '</p><p>');
 }
 
 /* ── Toast ──────────────────────────────────────────────────── */

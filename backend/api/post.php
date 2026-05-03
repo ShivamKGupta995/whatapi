@@ -38,7 +38,7 @@ if (!$post) jsonError('Post not found', 404);
 $post['tags'] = $post['tags'] ? array_filter(array_map('trim', explode(',', $post['tags']))) : [];
 
 /* Related posts: same category, excluding this post */
-$rel = $db->prepare("SELECT slug, title, excerpt, thumbnail_url, author_name, published_at, read_time,
+$rel = $db->prepare("SELECT p.slug, p.title, p.excerpt, p.thumbnail_url, p.author_name, p.published_at, p.read_time,
                             c.name AS category
                      FROM posts p
                      LEFT JOIN categories c ON p.category_id = c.id

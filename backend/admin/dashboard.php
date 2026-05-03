@@ -1,3 +1,28 @@
+<?php
+require_once __DIR__ . '/../includes/auth.php';
+require_once __DIR__ . '/../includes/db.php';
+requireLogin();
+
+$db     = getDb();
+$filter = $_GET['status'] ?? 'all';
+$search = trim($_GET['q'] ?? '');
+
+$where  = ['1=1'];
+$params = [];
+if ($filter !== 'all') { $where[] = 'p.status=:st'; $params[':st'] = $filter; }
+if ($search) { $where[] = 'p.title LIKE :q'; $params[':q'] = '%'.$search.'%'; }
+$cond = implode(' AND ', $where);
+
+$posts = $db->prepare("SELECT p.id, p.title, p.slug, p.status, p.author_name, p.published_at, p.read_time, c.name AS category
+                        FROM posts p LEFT JOIN categories c ON p.category_id=c.id
+                        WHERE $cond ORDER BY p.id DESC");
+$posts->execute($params);
+$posts = $posts->fetchAll();
+
+$totals = $db->query("SELECT status, COUNT(*) AS n FROM posts GROUP BY status")->fetchAll();
+$counts = ['all' => 0, 'published' => 0, 'draft' => 0];
+foreach ($totals as $r) { $counts[$r['status']] = $r['n']; $counts['all'] += $r['n']; }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -114,31 +139,6 @@
   </style>
 </head>
 <body>
-<?php
-require_once __DIR__ . '/../includes/auth.php';
-require_once __DIR__ . '/../includes/db.php';
-requireLogin();
-
-$db   = getDb();
-$filter = $_GET['status'] ?? 'all';
-$search = trim($_GET['q'] ?? '');
-
-$where = ['1=1'];
-$params = [];
-if ($filter !== 'all') { $where[] = 'p.status=:st'; $params[':st'] = $filter; }
-if ($search) { $where[] = 'p.title LIKE :q'; $params[':q'] = '%'.$search.'%'; }
-$cond = implode(' AND ', $where);
-
-$posts = $db->prepare("SELECT p.id, p.title, p.slug, p.status, p.author_name, p.published_at, p.read_time, c.name AS category
-                        FROM posts p LEFT JOIN categories c ON p.category_id=c.id
-                        WHERE $cond ORDER BY p.id DESC");
-$posts->execute($params);
-$posts = $posts->fetchAll();
-
-$totals = $db->query("SELECT status, COUNT(*) AS n FROM posts GROUP BY status")->fetchAll();
-$counts = ['all' => 0, 'published' => 0, 'draft' => 0];
-foreach ($totals as $r) { $counts[$r['status']] = $r['n']; $counts['all'] += $r['n']; }
-?>
 
 <!-- Sidebar -->
 <aside class="sidebar">
@@ -233,9 +233,9 @@ foreach ($totals as $r) { $counts[$r['status']] = $r['n']; $counts['all'] += $r[
             </td></tr>
           <?php else: ?>
             <?php foreach ($posts as $p): ?>
-            <tr>
+            <tr style="cursor:pointer" onclick="window.location='editor.php?id=<?= $p['id'] ?>'">
               <td class="post-title-cell">
-                <strong><?= htmlspecialchars($p['title']) ?></strong>
+                <strong><a href="editor.php?id=<?= $p['id'] ?>" style="color:inherit;text-decoration:none"><?= htmlspecialchars($p['title']) ?></a></strong>
                 <span>/blog/post.html?slug=<?= htmlspecialchars($p['slug']) ?></span>
               </td>
               <td><?= htmlspecialchars($p['category'] ?? '—') ?></td>
@@ -246,10 +246,10 @@ foreach ($totals as $r) { $counts[$r['status']] = $r['n']; $counts['all'] += $r[
               <td><?= $p['published_at'] ? date('d M Y', strtotime($p['published_at'])) : '—' ?></td>
               <td><?= $p['read_time'] ?> min</td>
               <td>
-                <div class="actions">
+                <div class="actions" onclick="event.stopPropagation()">
                   <a href="editor.php?id=<?= $p['id'] ?>" class="btn btn-outline btn-sm">Edit</a>
                   <a href="/blog/post.html?slug=<?= urlencode($p['slug']) ?>" target="_blank" class="btn btn-outline btn-sm">View</a>
-                  <form method="POST" action="delete.php" onsubmit="return confirm('Delete this post? This cannot be undone.')">
+                  <form method="POST" action="delete.php" onsubmit="return confirm('Delete this post? This cannot be undone.')" onclick="event.stopPropagation()">
                     <input type="hidden" name="id" value="<?= $p['id'] ?>"/>
                     <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                   </form>

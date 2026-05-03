@@ -248,7 +248,7 @@
 <script>
 /* ── Config ─────────────────────────────────────────────────── */
 // After deploying backend to Hostinger, update this URL:
-const API_BASE = '';  // e.g. 'https://yourdomain.com/backend/api'
+const API_BASE = '/backend/api';
 
 const POSTS_PER_PAGE = 9;
 
@@ -282,7 +282,7 @@ const SAMPLE_POSTS = [
     id: 1,
     slug: 'whatsapp-marketing-strategy-2026',
     title: 'How to Build a WhatsApp Marketing Strategy in 2026 — A Complete Guide',
-    excerpt: 'WhatsApp has a 98% open rate. But fewer than 10% of businesses actually see a positive ROI. Here's how to build a strategy that drives real revenue, not just opens.',
+    excerpt: "WhatsApp has a 98% open rate. But fewer than 10% of businesses actually see a positive ROI. Here's how to build a strategy that drives real revenue, not just opens.",
     category: 'WhatsApp Marketing',
     author_name: 'Priya Sharma',
     author_role: 'Marketing Lead',
@@ -310,7 +310,7 @@ const SAMPLE_POSTS = [
     id: 3,
     slug: 'ecommerce-whatsapp-abandoned-cart',
     title: 'How This D2C Brand Recovered ₹14 Lakh in Abandoned Carts with WhatsApp',
-    excerpt: 'A Mumbai-based fashion brand used Whatapi's automation to recover abandoned carts automatically — here's the exact flow they used.',
+    excerpt: `A Mumbai-based fashion brand used Whatapi's automation to recover abandoned carts automatically — here's the exact flow they used.`,
     category: 'Case Studies',
     author_name: 'Ananya Iyer',
     author_role: 'Customer Success',
@@ -338,7 +338,7 @@ const SAMPLE_POSTS = [
     id: 5,
     slug: 'whatsapp-api-vs-business-app',
     title: 'WhatsApp API vs WhatsApp Business App — What Indian Businesses Need to Know',
-    excerpt: 'The WhatsApp Business app is free, but it's holding your growth back. Here's when to upgrade to the API and what changes when you do.',
+    excerpt: `The WhatsApp Business app is free, but it's holding your growth back. Here's when to upgrade to the API and what changes when you do.`,
     category: 'Business Tips',
     author_name: 'Priya Sharma',
     author_role: 'Marketing Lead',
@@ -366,7 +366,7 @@ const SAMPLE_POSTS = [
     id: 7,
     slug: 'whatapi-platform-update-april-2026',
     title: 'Platform Update: New Broadcast Analytics, Template Manager & More',
-    excerpt: 'This month we shipped broadcast-level analytics, a redesigned template manager, and faster message delivery. Here's everything that's new.',
+    excerpt: `This month we shipped broadcast-level analytics, a redesigned template manager, and faster message delivery. Here's everything that's new.`,
     category: 'Platform Updates',
     author_name: 'Whatapi Team',
     author_role: '',
@@ -394,7 +394,7 @@ const SAMPLE_POSTS = [
     id: 9,
     slug: 'whatsapp-template-messages-guide',
     title: 'WhatsApp Template Messages: Complete Guide to Getting Approved',
-    excerpt: 'Meta's approval process can be tricky. Learn what works, what gets rejected, and the best templates for marketing, utility, and authentication messages.',
+    excerpt: `Meta's approval process can be tricky. Learn what works, what gets rejected, and the best templates for marketing, utility, and authentication messages.`,
     category: 'WhatsApp Marketing',
     author_name: 'Vikram Nair',
     author_role: 'Product Team',
@@ -516,8 +516,8 @@ function renderCard(p, featured = false) {
   const initial  = p.author_name.charAt(0).toUpperCase();
   const postUrl  = `post.html?slug=${p.slug}`;
 
-  const imgHtml  = p.thumbnail
-    ? `<img src="${p.thumbnail}" alt="${escHtml(p.title)}" class="blog-card-img" loading="lazy" width="800" height="450" />`
+  const imgHtml  = p.thumbnail_url
+    ? `<img src="${p.thumbnail_url}" alt="${escHtml(p.title)}" class="blog-card-img" loading="lazy" width="800" height="450" />`
     : `<div class="blog-card-placeholder">${BLOG_ICONS[p.emoji] || BLOG_ICONS['📝']}</div>`;
 
   return `
